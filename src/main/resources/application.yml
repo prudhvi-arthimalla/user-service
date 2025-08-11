@@ -1,0 +1,34 @@
+# src/main/resources/application.yml
+spring:
+  application:
+    name: user-service
+  data:
+    mongodb:
+      # Default works for local Docker-run Mongo; override with SPRING_DATA_MONGODB_URI
+      uri: ${SPRING_DATA_MONGODB_URI:mongodb://localhost:27017/user-service}
+      auto-index-creation: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      probes:
+        enabled: true            # liveness/readiness contributors
+      show-details: never        # keep health terse
+  health:
+    mongo:
+      enabled: true
+
+logging:
+  level:
+    org.springframework: INFO
+
+
+# Mongock migration configuration
+mongock:
+  migration-scan-package: com.prudhvi.user.service.migrations
+  enabled: true
+  transaction-enabled: false
