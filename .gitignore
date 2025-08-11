@@ -1,40 +1,86 @@
-HELP.md
-.gradle
+# ========================================
+# Kotlin / Java / Spring Boot build files
+# ========================================
+*.class
+*.jar
+*.war
+*.ear
+*.iml
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# Gradle
+.gradle/
 build/
 !gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**/build/
-!**/src/test/**/build/
+!**/src/main/**
+!**/src/test/**
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
+# Kotlin build cache
+kotlin-js-store/
 
-### IntelliJ IDEA ###
-.idea
+# ========================================
+# IDE files
+# ========================================
+# IntelliJ IDEA
+.idea/
 *.iws
-*.iml
 *.ipr
-out/
-!**/src/main/**/out/
-!**/src/test/**/out/
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-
-### VS Code ###
+# VS Code
 .vscode/
 
-### Kotlin ###
-.kotlin
+# Eclipse
+.project
+.classpath
+.settings/
+
+# NetBeans
+/nbproject/private/
+
+# ========================================
+# OS-specific files
+# ========================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ========================================
+# Logs & temporary files
+# ========================================
+*.log
+*.tmp
+*.temp
+hs_err_pid*
+replay_pid*
+
+# ========================================
+# Environment / Secrets
+# ========================================
+.env
+.env.*
+application-*.yml
+application-*.properties
+
+# Keep example config files
+!application-example.yml
+!application-example.properties
+
+# ========================================
+# Docker
+# ========================================
+# Ignore docker build cache
+**/docker-compose.override.yml
+.docker/
