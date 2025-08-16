@@ -6,26 +6,25 @@ import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 import java.time.Instant
 
-@Document("refresh_sessions")
+@Document(collection = "refresh_sessions")
 data class RefreshSessions(
-
     @Id
-    val sessionId: String,
+    val sessionId: String? = null,             // Mongo-generated _id, or UUID if you prefer
 
-    val userId: String,
+    val userId: String,                        // The user who owns this session
 
-    val device: UserDevice,
-
-    val ip: String,
-
-    val refreshTokenHash: String,
+    val refreshTokenHash: String,              // Hashed refresh token (never store raw token)
 
     @CreatedDate
-    val createdAt: Instant,
+    val createdAt: Instant = Instant.now(),    // When session was created
 
-    val expiresAt: Instant,
+    val lastUsedAt: Instant? = null,           // Optional: update whenever token is rotated
 
-    val revokedAt: Instant? = null,
+    val expiresAt: Instant,                    // TTL index for auto-expiry
 
-    val reason: String? = null
+    val revokedAt: Instant? = null,            // Set when user logs out / session revoked
+
+    val device: UserDevice? = null,            // Structured client info (nullable if unknown)
+
+    val ip: String? = null                     // Captured client IP (nullable if unavailable)
 )

@@ -1,5 +1,7 @@
 package com.prudhvi.user.service.controller
 
+import com.prudhvi.user.service.dto.LoginRequest
+import com.prudhvi.user.service.dto.LoginResponse
 import com.prudhvi.user.service.dto.RegisterUserRequest
 import com.prudhvi.user.service.service.UserService
 import jakarta.validation.Valid
@@ -28,5 +30,10 @@ class UserController(
     @ResponseStatus(HttpStatus.OK)
     fun verifyEmail(@RequestParam token: String): Mono<Void> {
         return userService.verifyEmail(token)
+    }
+
+    @PostMapping("/auth/login", consumes = ["application/json"])
+    fun login(@RequestBody loginRequest: LoginRequest): Mono<LoginResponse> {
+        return userService.login(loginRequest)
     }
 }
