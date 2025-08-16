@@ -34,11 +34,19 @@ data class Users(
     @Indexed
     var status: UserStatus,
 
+    var temporaryLockedUntil: Instant? = null,
+
+    var failedLoginCount: Int? = null,
+
+    var lastLoginFailed: Instant? =null,
+
     val roles: Set<UserRoles> = setOf<UserRoles>(UserRoles.USER),
 
     @CreatedDate
     @Indexed
     val createdAt: Instant? = null,
+
+    var lastLoggedInAt: Instant? = null,
 
     @LastModifiedDate
     val updatedAt: Instant? = null,

@@ -32,15 +32,25 @@ dependencies {
 	implementation("io.mongock:mongock-springboot-v3")
 	implementation("io.mongock:mongodb-springdata-v4-driver")
 	implementation("org.apache.commons:commons-lang3:3.18.0")
+	implementation("io.jsonwebtoken:jjwt-api:0.11.5")
+	runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.5")
+	runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.11.5")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.boot:spring-boot-testcontainers")
 	testImplementation("io.projectreactor:reactor-test")
+	testImplementation("org.mockito.kotlin:mockito-kotlin:5.2.1")
+	testImplementation("org.mockito:mockito-junit-jupiter:5.12.0")
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 	testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test")
 	testImplementation("org.springframework.security:spring-security-test")
 	testImplementation("org.testcontainers:junit-jupiter")
 	testImplementation("org.testcontainers:mongodb")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+	testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
+	testImplementation("org.mockito:mockito-core:5.12.0")
+	testImplementation("org.mockito:mockito-junit-jupiter:5.12.0")
+	testImplementation("io.projectreactor:reactor-test:3.6.6")
 }
 
 kotlin {
